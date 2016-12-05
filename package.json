@@ -1,0 +1,61 @@
+{
+  "name": "reactjs-inversifyjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "postinstall": "jspm install",
+    "precommit": "npm test",
+    "pretest": "standard",
+    "start": "node server",
+    "build": "jspm bundle app --inject --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LordXaoca/reactjs-inversifyjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LordXaoca/reactjs-inversifyjs/issues"
+  },
+  "homepage": "https://github.com/LordXaoca/reactjs-inversifyjs#readme",
+  "dependencies": {
+    "inversify": "^3.0.0-beta.3",
+    "jspm": "^0.16.48",
+    "react": "^15.4.1",
+    "http-server": "^0.9.0",
+    "reflect-metadata": "^0.1.8"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "public"
+    },
+    "dependencies": {
+      "@types/react": "npm:@types/react@^0.14.52",
+      "classnames": "npm:classnames@^2.2.5",
+      "css": "github:systemjs/plugin-css@^0.1.32",
+      "inversify": "npm:inversify@^3.0.0-beta.3",
+      "react": "npm:react@^15.4.1",
+      "react-dom": "npm:react-dom@^15.4.1",
+      "reflect-metadata": "npm:reflect-metadata@^0.1.8",
+      "ts": "github:frankwallis/plugin-typescript@^5.3.1"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4",
+      "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@^0.6.0",
+      "ts-runtime": "npm:babel-runtime@^5.8.24",
+      "typescript": "npm:typescript@^2.0.7"
+    }
+  },
+  "standard": {
+    "ignore": [
+      "public/config.js"
+    ]
+  },
+  "devDependencies": {
+    "chokidar-socket-emitter": "^0.5.4"
+  }
+}
