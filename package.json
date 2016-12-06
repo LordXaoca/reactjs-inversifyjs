@@ -2,14 +2,6 @@
   "name": "reactjs-inversifyjs",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
-  "scripts": {
-    "postinstall": "jspm install",
-    "precommit": "npm test",
-    "pretest": "standard",
-    "start": "node server",
-    "build": "jspm bundle app --inject --minify"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LordXaoca/reactjs-inversifyjs.git"
@@ -21,41 +13,128 @@
   },
   "homepage": "https://github.com/LordXaoca/reactjs-inversifyjs#readme",
   "dependencies": {
-    "inversify": "^3.0.0-beta.3",
-    "jspm": "^0.16.48",
-    "react": "^15.4.1",
-    "http-server": "^0.9.0",
-    "reflect-metadata": "^0.1.8"
-  },
-  "jspm": {
-    "directories": {
-      "baseURL": "public"
-    },
-    "dependencies": {
-      "@types/react": "npm:@types/react@^0.14.52",
-      "classnames": "npm:classnames@^2.2.5",
-      "css": "github:systemjs/plugin-css@^0.1.32",
-      "inversify": "npm:inversify@^3.0.0-beta.3",
-      "react": "npm:react@^15.4.1",
-      "react-dom": "npm:react-dom@^15.4.1",
-      "reflect-metadata": "npm:reflect-metadata@^0.1.8",
-      "ts": "github:frankwallis/plugin-typescript@^5.3.1"
-    },
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4",
-      "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@^0.6.0",
-      "ts-runtime": "npm:babel-runtime@^5.8.24",
-      "typescript": "npm:typescript@^2.0.7"
-    }
-  },
-  "standard": {
-    "ignore": [
-      "public/config.js"
-    ]
+    "typescript": "^2.1.0"
   },
   "devDependencies": {
-    "chokidar-socket-emitter": "^0.5.4"
+    "@types/chai": "^3.4.31",
+    "@types/mocha": "^2.2.30",
+    "@types/node": "^6.0.37",
+    "@types/systemjs": "^0.19.29",
+    "chai": "^3.4.1",
+    "chokidar-socket-emitter": "^0.5.0",
+    "http-server": "^0.9.0",
+    "jspm": "^0.17.0-beta.32",
+    "mocha": "^3.0.2",
+    "open": "^0.0.5",
+    "rollup-plugin-includepaths": "^0.1.6",
+    "ts-node": "^1.3.0",
+    "tslib": "github:frankwallis/tslib"
+  },
+  "scripts": {
+    "start": "node tasks/start",
+    "example": "node tasks/start",
+    "build": "node tasks/build",
+    "bundle": "node tasks/build"
+  },
+  "jspm": {
+    "registry": "npm",
+    "dependencies": {
+      "@types/react": "^0.14.32",
+      "@types/react-dom": "^0.14.15",
+      "inversify": "^3.0.0-rc.1",
+      "react-dom": "^15.2.1",
+      "reflect-metadata": "^0.1.8",
+      "ts": "github:frankwallis/plugin-typescript@^5.0.17"
+    },
+    "devDependencies": {
+      "clean-css": "^3.4.3",
+      "css": "github:frankwallis/plugin-css@master",
+      "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@^0.5.3",
+      "tty": "jspm-nodelibs-tty@^0.2.0"
+    },
+    "peerDependencies": {
+      "assert": "jspm-nodelibs-assert@^0.2.0",
+      "buffer": "jspm-nodelibs-buffer@^0.2.0",
+      "child_process": "jspm-nodelibs-child_process@^0.2.0",
+      "constants": "jspm-nodelibs-constants@^0.2.0",
+      "crypto": "jspm-nodelibs-crypto@^0.2.0",
+      "domain": "jspm-nodelibs-domain@^0.2.0",
+      "events": "jspm-nodelibs-events@^0.2.0",
+      "fs": "jspm-nodelibs-fs@^0.2.0",
+      "http": "jspm-nodelibs-http@^0.2.0",
+      "https": "jspm-nodelibs-https@^0.2.0",
+      "module": "jspm-nodelibs-module@^0.2.0",
+      "net": "jspm-nodelibs-net@^0.2.0",
+      "os": "jspm-nodelibs-os@^0.2.0",
+      "path": "jspm-nodelibs-path@^0.2.0",
+      "process": "jspm-nodelibs-process@^0.2.0",
+      "react": "^15.2.1",
+      "stream": "jspm-nodelibs-stream@^0.2.0",
+      "string_decoder": "jspm-nodelibs-string_decoder@^0.2.0",
+      "url": "jspm-nodelibs-url@^0.2.0",
+      "util": "jspm-nodelibs-util@^0.2.0",
+      "vm": "jspm-nodelibs-vm@^0.2.0",
+      "zlib": "jspm-nodelibs-zlib@^0.2.0"
+    },
+    "overrides": {
+      "github:socketio/socket.io-client@1.7.1": {
+        "main": "socket.io.js"
+      },
+      "npm:browserify-zlib@0.1.4": {
+        "dependencies": {
+          "readable-stream": "^2.0.2",
+          "pako": "~0.2.0"
+        },
+        "map": {
+          "_stream_transform": "readable-stream/transform"
+        }
+      },
+      "npm:debug@2.3.3": {
+        "main": "browser.js",
+        "jspmNodeConversion": false,
+        "format": "cjs",
+        "map": {
+          "./browser.js": {
+            "node": "./node.js"
+          },
+          "fs": "@node/fs",
+          "net": "@node/net",
+          "tty": "@node/tty",
+          "util": "@node/util"
+        }
+      },
+      "npm:inherits@2.0.3": {
+        "ignore": [
+          "test.js"
+        ]
+      },
+      "npm:ms@0.7.2": {
+        "jspmNodeConversion": false,
+        "format": "cjs"
+      },
+      "npm:reflect-metadata@0.1.8": {
+        "jspmNodeConversion": false,
+        "map": {
+          "crypto": {
+            "node": "@node/crypto",
+            "default": "@empty"
+          }
+        }
+      },
+      "npm:typescript@2.1.1": {
+        "browser": {},
+        "map": {
+          "buffer": "@empty",
+          "child_process": "@empty",
+          "fs": "@empty",
+          "path": "@empty",
+          "process": "@empty",
+          "readline": "@empty"
+        },
+        "dependencies": {
+          "source-map-support": "*"
+        }
+      }
+    }
   }
-}
+}
